@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eaf5ff">
+  <meta name="description" content="ADHD Living — understanding ADHD, embracing differences, and finding your own rhythm. Our website is coming soon.">
+  <title>ADHD Living — Coming Soon</title>
+  <style>
+    :root {
+      --ink: #173653;
+      --muted: #5e7890;
+      --blue: #3989c9;
+      --blue-deep: #236da9;
+      --pale: #eaf5ff;
+      --line: rgba(68, 126, 172, .16);
+      --white: rgba(255,255,255,.82);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 12% 12%, rgba(255,255,255,.95) 0, rgba(255,255,255,0) 36%),
+        radial-gradient(ellipse at 88% 78%, rgba(177,218,248,.58) 0, rgba(177,218,248,0) 38%),
+        linear-gradient(135deg, #f5faff 0%, #eaf5ff 48%, #dceeff 100%);
+      overflow-x: hidden;
+    }
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      border: 1px solid rgba(75,145,198,.13);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    body::before { width: 540px; height: 540px; top: -310px; right: -130px; }
+    body::after { width: 390px; height: 390px; bottom: -245px; left: -140px; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; position: relative; isolation: isolate; }
+    header {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 30px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand-mark {
+      width: 43px; height: 43px; border-radius: 14px;
+      display: grid; place-items: center;
+      color: white; background: linear-gradient(145deg, #76b8e8, #347fb9);
+      box-shadow: 0 8px 22px rgba(49,126,184,.22);
+    }
+    .brand-mark svg { width: 25px; height: 25px; }
+    .brand-name { font-size: 17px; font-weight: 750; letter-spacing: -.045em; }
+    .brand-name span { color: var(--blue); }
+    .top-note {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 9px 14px; border: 1px solid var(--line);
+      border-radius: 999px; color: #52728d; background: rgba(255,255,255,.48);
+      font-size: 12px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #65b89b; box-shadow: 0 0 0 4px rgba(101,184,155,.13); }
+    main {
+      width: min(1160px, calc(100% - 48px));
+      margin: auto;
+      padding: 52px 0 76px;
+      display: grid; grid-template-columns: 1.08fr .92fr;
+      align-items: center; gap: clamp(36px, 7vw, 96px);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--blue-deep); font-size: 12px; font-weight: 750;
+      letter-spacing: .16em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 27px; height: 1px; background: #69a9d8; }
+    h1 {
+      max-width: 660px; margin: 22px 0 20px;
+      font-size: clamp(48px, 6.7vw, 82px); line-height: .99;
+      letter-spacing: -.075em; font-weight: 760;
+    }
+    h1 .accent { color: var(--blue); }
+    .lead {
+      max-width: 535px; margin: 0; color: var(--muted);
+      font-size: clamp(16px, 1.55vw, 19px); line-height: 1.8;
+    }
+    .quote {
+      margin: 30px 0 0; padding: 17px 20px;
+      border-left: 2px solid #75b4df;
+      color: #42627d; font-size: 15px; line-height: 1.65;
+      background: linear-gradient(90deg, rgba(255,255,255,.5), rgba(255,255,255,0));
+      border-radius: 0 12px 12px 0;
+    }
+    .quote strong { display: block; margin-top: 6px; color: #7690a5; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-top: 32px; }
+    .button {
+      min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 0 20px; border-radius: 12px; text-decoration: none;
+      font-size: 14px; font-weight: 700; transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .primary { color: white; background: linear-gradient(135deg, #4c9bd2, #2876b3); box-shadow: 0 10px 22px rgba(44,119,177,.2); }
+    .primary:hover { box-shadow: 0 13px 26px rgba(44,119,177,.28); }
+    .secondary { color: #426783; border: 1px solid var(--line); background: rgba(255,255,255,.5); }
+    .button svg { width: 16px; height: 16px; }
+    .visual { position: relative; min-height: 440px; display: grid; place-items: center; }
+    .orb {
+      position: absolute; width: min(420px, 88%); aspect-ratio: 1;
+      border-radius: 50%; background: linear-gradient(145deg, rgba(255,255,255,.92), rgba(193,225,248,.62));
+      box-shadow: inset 0 2px 20px rgba(255,255,255,.8), 0 28px 80px rgba(72,137,185,.12);
+      border: 1px solid rgba(255,255,255,.8);
+    }
+    .orbit { position: absolute; width: 112%; aspect-ratio: 1; border: 1px solid rgba(68,139,190,.18); border-radius: 50%; transform: rotate(-24deg) scaleY(.72); }
+    .orbit.two { width: 126%; transform: rotate(38deg) scaleY(.68); border-style: dashed; border-color: rgba(68,139,190,.14); }
+    .illustration { position: relative; width: min(390px, 82%); z-index: 1; filter: drop-shadow(0 22px 25px rgba(48,112,157,.12)); }
+    .float-card {
+      position: absolute; z-index: 2; padding: 13px 16px; border: 1px solid rgba(255,255,255,.9);
+      border-radius: 15px; background: rgba(255,255,255,.72); backdrop-filter: blur(12px);
+      box-shadow: 0 12px 30px rgba(55,119,164,.1); color: #426783;
+      font-size: 12px; font-weight: 650;
+    }
+    .float-card span { display: block; margin-top: 3px; color: #7892a7; font-size: 10px; font-weight: 500; }
+    .card-one { top: 15%; left: -1%; }
+    .card-two { right: -2%; bottom: 17%; }
+    .spark { position: absolute; color: #6eacd7; font-size: 27px; }
+    .spark.one { top: 13%; right: 15%; }
+    .spark.two { bottom: 13%; left: 12%; font-size: 19px; }
+    footer {
+      width: min(1160px, calc(100% - 48px)); margin: 0 auto;
+      padding: 22px 0 28px; border-top: 1px solid rgba(68,126,172,.13);
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      color: #7891a5; font-size: 12px;
+    }
+    footer strong { color: #55748e; font-weight: 650; }
+    @media (max-width: 760px) {
+      header { width: min(100% - 36px, 560px); padding: 22px 0; }
+      .top-note { font-size: 10px; padding: 8px 10px; }
+      main { width: min(100% - 40px, 560px); padding: 42px 0 56px; grid-template-columns: 1fr; gap: 22px; }
+      h1 { font-size: clamp(49px, 12vw, 70px); }
+      .visual { min-height: 340px; grid-row: 1; }
+      .orb { width: min(310px, 75%); }
+      .illustration { width: min(300px, 75%); }
+      .card-one { left: 0; top: 12%; }
+      .card-two { right: 0; bottom: 12%; }
+      footer { width: min(100% - 40px, 560px); }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="#" aria-label="ADHD Living home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M16 5.2c-2.8-2.1-7.2-.6-7.2 3.4-3.7.5-4.9 5.1-2 7.4-1.6 3.2.6 6.5 4 6.4.7 3.7 4.2 5 7.1 2.7V7.1c-.5-.8-1.1-1.4-1.9-1.9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5.2c2.8-2.1 7.2-.6 7.2 3.4 3.7.5 4.9 5.1 2 7.4 1.6 3.2-.6 6.5-4 6.4-.7 3.7-4.2 5-7.1 2.7V7.1c.5-.8 1.1-1.4 1.9-1.9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 12.2c1.8 0 2.7 1.2 2.7 2.7M21 12.2c-1.8 0-2.7 1.2-2.7 2.7M12 20c1.7-.1 2.8-1 3.2-2.5M20 20c-1.7-.1-2.8-1-3.2-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-name">ADHD <span>Living</span></span>
+      </a>
+      <div class="top-note"><i class="dot"></i> A new space is taking shape</div>
+    </header>
+
+    <main>
+      <section class="copy">
+        <div class="eyebrow">Something meaningful is coming</div>
+        <h1>A little more clarity.<br><span class="accent">A lot more</span> understanding.</h1>
+        <p class="lead">We're creating a welcoming space for ADHD awareness, practical everyday insights, and stories that remind us every mind has its own rhythm.</p>
+        <div class="quote">
+          “Different minds. Unique strengths. One beautiful way of living.”
+          <strong>— ADHD Living</strong>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="mailto:hello@adhdliving.com?subject=Stay%20connected%20with%20ADHD%20Living">
+            Stay connected
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="button secondary" href="https://www.facebook.com/" target="_blank" rel="noopener">Follow our journey</a>
+        </div>
+      </section>
+
+      <section class="visual" aria-label="Decorative illustration representing different minds and ideas">
+        <div class="orb"></div><div class="orbit"></div><div class="orbit two"></div>
+        <span class="spark one">✳</span><span class="spark two">✦</span>
+        <div class="float-card card-one">Your pace is valid<span>Progress looks different for everyone</span></div>
+        <div class="float-card card-two">Room to grow<span>One day, one step at a time</span></div>
+        <svg class="illustration" viewBox="0 0 420 420" fill="none" role="img" aria-label="Abstract blue brain and flowing lines">
+          <defs>
+            <linearGradient id="brain" x1="92" y1="75" x2="330" y2="340" gradientUnits="userSpaceOnUse"><stop stop-color="#A8D7F5"/><stop offset=".52" stop-color="#6EAFE0"/><stop offset="1" stop-color="#397FB7"/></linearGradient>
+            <linearGradient id="stem" x1="200" y1="250" x2="225" y2="360" gradientUnits="userSpaceOnUse"><stop stop-color="#77B8E5"/><stop offset="1" stop-color="#4B91C5"/></linearGradient>
+          </defs>
+          <path d="M207 337c-8 14-11 29-7 46h34c-4-18-1-33 7-46" fill="url(#stem)" opacity=".9"/>
+          <path d="M205 80c-20-21-57-16-68 10-30-3-52 23-42 51-27 18-27 55-3 73-12 29 7 61 37 62 4 30 35 46 62 31 7 17 23 28 39 28V91c-7-8-15-12-25-11Z" fill="url(#brain)" stroke="#fff" stroke-opacity=".75" stroke-width="4"/>
+          <path d="M215 80c20-21 57-16 68 10 30-3 52 23 42 51 27 18 27 55 3 73 12 29-7 61-37 62-4 30-35 46-62 31-7 17-23 28-39 28V91c7-8 15-12 25-11Z" fill="url(#brain)" stroke="#fff" stroke-opacity=".75" stroke-width="4"/>
+          <g stroke="#EAF7FF" stroke-width="5" stroke-linecap="round" opacity=".9">
+            <path d="M174 104c-22 2-31 18-27 36M120 157c17-5 32 5 33 21M111 217c17-13 37-8 45 8M151 270c16-14 35-10 43 4M180 129c-3 17 5 29 20 34M171 203c-1 16 9 27 24 30"/>
+            <path d="M246 104c22 2 31 18 27 36M300 157c-17-5-32 5-33 21M309 217c-17-13-37-8-45 8M269 270c-16-14-35-10-43 4M240 129c3 17-5 29-20 34M249 203c1 16-9 27-24 30"/>
+          </g>
+          <path d="M91 322c32 18 65 27 119 27s88-9 119-27" stroke="#78B6E1" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+          <circle cx="92" cy="112" r="7" fill="#fff"/><circle cx="330" cy="278" r="6" fill="#fff"/><circle cx="311" cy="92" r="4" fill="#fff"/>
+        </svg>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year">2026</span> <strong>ADHD Living</strong>. All rights reserved.</span>
+      <span>Understand. Embrace. Thrive.</span>
+    </footer>
+  </div>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
